@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+    />
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <title>SA Projects Map - Explore Various Development Initiatives Across South Africa</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="hamburger-lines">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </div>
+    <div class="menu" id="menuContainer">
+      <!-- Menu items will be populated dynamically -->
+    </div>
+    <div class="scroll-message" id="scrollMessage">
+      Use Ctrl + Scroll to zoom the map
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,258 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.menu {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 1000;
+  height: 65vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5px;
+  background: #f8f9fa;
+  scrollbar-width: thin;
+  padding-left: 70px; /* Increased left padding */
+  padding-right: 30px; /* Added right padding */
+  padding-top: 25px;
+  scrollbar-color: #888 transparent;
+  width: 180px; /* Increased overall width to accommodate the padding */
+  transition: transform 0.3s ease-in-out;
+  border-radius: 0 0 10px 0;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item {
+  background: #e9e6e6;
+  padding: 15px;
+  width: 160px; /* Increased width for menu items */
+  margin-bottom: 8px;
+  margin-left: auto; /* This pushes items to the right */
+  color: #666;
+  font-size: 15px;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-family: "Segoe UI";
+  transition: 0.3s all ease-in-out;
+}
+
+.menu-item.active {
+  background: #d1d1d1;
+  transform: translateX(10px);
+  border-left: 4px solid #666;
+}
+
+.menu-item:hover {
+  background: #d6d3d3;
+  transform: translateX(5px);
+}
+
+.menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.5);
+  border-radius: 4px;
+}
+
+.leaflet-tile-pane {
+  -webkit-filter: grayscale(100%) brightness(105%);
+  filter: grayscale(100%) brightness(105%);
+}
+
+/* Custom zoom control positioning */
+.leaflet-control-zoom {
+  position: fixed !important;
+  left: 280px !important;
+  top: 25px !important;
+}
+
+/* Hamburger Menu Icon */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1002;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hamburger-lines {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hamburger-lines div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+.hamburger.active .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .line2 {
+  opacity: 0;
+}
+
+.hamburger.active .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Scroll message popup */
+.scroll-message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  z-index: 1001;
+  font-family: "Segoe UI";
+  animation: fadeOut 2s forwards;
+  animation-delay: 2s;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .menu {
+    transform: translateX(-100%);
+    width: 80%;
+    max-width: 300px;
+    height: 100vh; /* Full height for mobile */
+    padding-left: 10px;
+    background: rgba(248, 249, 250, 0.98);
+    padding-top: 80px; /* Space for hamburger menu */
+    border-radius: 0; /* Remove border radius for mobile */
+    box-shadow: none; /* Remove shadow for mobile */
+  }
+  .menu.active {
+    transform: translateX(0);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* Add shadow when menu is open */
+  }
+  .hamburger {
+    display: block;
+  }
+  .menu-item {
+    width: calc(100% - 30px);
+    margin-right: 15px;
+  }
+  .leaflet-control-zoom {
+    left: 20px !important;
+    top: 80px !important;
+  }
+}
+
+/* Prevent marker distortion */
+.leaflet-marker-icon {
+  width: 25px !important;
+  height: 41px !important;
+  transition: all 0.3s ease;
+}
+
+.marker-highlight {
+  /* Pure yellow highlight */
+  filter: invert(80%) sepia(75%) saturate(1000%) hue-rotate(360deg)
+    brightness(105%) contrast(105%) !important;
+}
+
+/* Ensure popup text is readable */
+.leaflet-popup-content {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.zoom-tooltip {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.zoom-tooltip.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.zoom-tooltip.flash {
+  animation: flash 1s ease;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+.close-tooltip {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 4px;
+  line-height: 1;
+  margin-left: auto;
+}
+
+.close-tooltip:hover {
+  opacity: 0.8;
+}
