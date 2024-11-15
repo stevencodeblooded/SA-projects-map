@@ -325,16 +325,17 @@ let activeInitiative = null;
 let isTooltipHidden = false;
 let zoomTimeout;
 
+
 // Initialize map with different zoom levels based on screen size
 const isMobile = window.innerWidth <= 768;
-const initialZoom = isMobile ? 5 : 5;
+const initialZoom = isMobile ? 5 : 6;
 
 const map = L.map("map", {
   zoomControl: true,
   minZoom: isMobile ? 4 : 5,
   maxZoom: isMobile ? 8 : 12,
   scrollWheelZoom: false,
-}).setView([-26.1525, 26.1595], initialZoom);
+}).setView([-29.0852, 26.1596], initialZoom);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "© OpenStreetMap contributors",
