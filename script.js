@@ -19,33 +19,69 @@ const areasData = [
   },
   {
     province: "Limpopo",
-    area: "Musina & Blouberg",
+    area: "Musina",
     initiative: "Agricultural Facilitation & Extension",
     coordinates: { latitude: -22.3386, longitude: 30.0417 },
   },
   {
     province: "Limpopo",
-    area: "Bushbuckridge/Sabie Sands",
+    area: "Blouberg",
+    initiative: "Agricultural Facilitation & Extension",
+    coordinates: { latitude: -23.0233, longitude: 29.4023 },
+  },
+  {
+    province: "Limpopo",
+    area: "Bushbuckridge",
     initiative: "Agricultural Facilitation & Extension",
     coordinates: { latitude: -24.8323, longitude: 31.0487 },
   },
   {
     province: "Limpopo",
-    area: "Steelpoort/Tubatse",
+    area: "Sabie Sands",
+    initiative: "Agricultural Facilitation & Extension",
+    coordinates: { latitude: -24.9323, longitude: 31.2487 },
+  },
+  {
+    province: "Limpopo",
+    area: "Steelpoort",
     initiative: "Agricultural Facilitation & Extension",
     coordinates: { latitude: -24.6838, longitude: 30.1565 },
   },
   {
+    province: "Limpopo",
+    area: "Tubatse",
+    initiative: "Agricultural Facilitation & Extension",
+    coordinates: { latitude: -24.5838, longitude: 30.2565 },
+  },
+  {
     province: "Northern Cape",
-    area: "Onseepkans & Pella",
+    area: "Onseepkans",
     initiative: "Agricultural Facilitation & Extension",
     coordinates: { latitude: -28.7667, longitude: 19.2333 },
   },
   {
+    province: "Northern Cape",
+    area: "Pella",
+    initiative: "Agricultural Facilitation & Extension",
+    coordinates: { latitude: -29.0333, longitude: 19.1533 },
+  },
+  {
     province: "Eastern Cape",
-    area: "Umtata/East London/Elliot",
+    area: "Umtata",
     initiative: "Agricultural Facilitation & Extension",
     coordinates: { latitude: -31.5889, longitude: 28.7844 },
+  },
+  {
+    province: "Eastern Cape",
+    area: "East London",
+    initiative: "Agricultural Facilitation & Extension",
+    coordinates: { latitude: -33.0153, longitude: 27.9116 },
+  },
+  {
+    province: "Eastern Cape",
+    area: "Elliot",
+    initiative: "Agricultural Facilitation & Extension",
+    coordinates: { latitude: -31.3352, longitude: 27.8502 },
   },
   {
     province: "NorthWest",
@@ -67,9 +103,27 @@ const areasData = [
   },
   {
     province: "Gauteng",
-    area: "Mamelodi, Soshanguve, Atteridgeville, Hammanskraal",
+    area: "Mamelodi",
     initiative: "ECD Centre Development",
     coordinates: { latitude: -25.7069, longitude: 28.3429 },
+  },
+  {
+    province: "Gauteng",
+    area: "Soshanguve",
+    initiative: "ECD Centre Development",
+    coordinates: { latitude: -25.5276, longitude: 28.1001 },
+  },
+  {
+    province: "Gauteng",
+    area: "Atteridgeville",
+    initiative: "ECD Centre Development",
+    coordinates: { latitude: -25.7729, longitude: 28.0718 },
+  },
+  {
+    province: "Gauteng",
+    area: "Hammanskraal",
+    initiative: "ECD Centre Development",
+    coordinates: { latitude: -25.4039, longitude: 28.2858 },
   },
   {
     province: "Mpumalanga",
@@ -103,21 +157,45 @@ const areasData = [
   },
   {
     province: "Kwa-Zulu Natal",
-    area: "Hammarsdale, Umzumbe, Empangeni",
+    area: "Hammarsdale",
     initiative: "Enterprise Development",
     coordinates: { latitude: -29.8224, longitude: 30.6619 },
   },
   {
+    province: "Kwa-Zulu Natal",
+    area: "Umzumbe",
+    initiative: "Enterprise Development",
+    coordinates: { latitude: -30.5795, longitude: 30.4928 },
+  },
+  {
+    province: "Kwa-Zulu Natal",
+    area: "Empangeni",
+    initiative: "Enterprise Development",
+    coordinates: { latitude: -28.7617, longitude: 31.8944 },
+  },
+  {
     province: "Limpopo",
-    area: "Steelpoort/Tubatse",
+    area: "Steelpoort",
     initiative: "Enterprise Development",
     coordinates: { latitude: -24.6838, longitude: 30.1565 },
   },
   {
+    province: "Limpopo",
+    area: "Tubatse",
+    initiative: "Enterprise Development",
+    coordinates: { latitude: -24.5838, longitude: 30.2565 },
+  },
+  {
     province: "Gauteng",
-    area: "Brokostspruit, Mamalodi",
+    area: "Brokostspruit",
     initiative: "Enterprise Development",
     coordinates: { latitude: -25.8144, longitude: 28.7458 },
+  },
+  {
+    province: "Gauteng",
+    area: "Mamalodi",
+    initiative: "Enterprise Development",
+    coordinates: { latitude: -25.7069, longitude: 28.3429 },
   },
   {
     province: "Mpumalanga",
@@ -137,7 +215,6 @@ const areasData = [
     initiative: "Social Facilitation, Health & Job creation",
     coordinates: { latitude: -30.3265, longitude: 30.6873 },
   },
-
   {
     province: "Kwa-Zulu Natal",
     area: "Umzumbe",
@@ -188,27 +265,33 @@ const areasData = [
   },
   {
     province: "Limpopo",
-    area: "Levuvhu, Letsitele",
+    area: "Levuvhu",
     initiative: "Land reform Facilitation",
     coordinates: { latitude: -23.7452, longitude: 30.3387 },
   },
   {
+    province: "Limpopo",
+    area: "Letsitele",
+    initiative: "Land reform Facilitation",
+    coordinates: { latitude: -23.8702, longitude: 30.4087 },
+  },
+  {
     province: "Eastern Cape",
-    area: "Mgungundlovu/Mabandla",
+    area: "Mgungundlovu",
     initiative: "Land reform Facilitation",
     coordinates: { latitude: -30.2193, longitude: 29.6127 },
+  },
+  {
+    province: "Eastern Cape",
+    area: "Mabandla",
+    initiative: "Land reform Facilitation",
+    coordinates: { latitude: -30.3193, longitude: 29.7127 },
   },
   {
     province: "Northern Cape",
     area: "Askam",
     initiative: "Land reform Facilitation",
     coordinates: { latitude: -26.9817, longitude: 20.7817 },
-  },
-  {
-    province: "Limpopo, Eastern Cape",
-    area: "Limpopo, Eastern Cape",
-    initiative: "Land reform Facilitation",
-    coordinates: { latitude: 0.0, longitude: 0.0 },
   },
   {
     province: "Eastern Cape",
@@ -244,7 +327,7 @@ let zoomTimeout;
 
 // Initialize map with different zoom levels based on screen size
 const isMobile = window.innerWidth <= 768;
-const initialZoom = isMobile ? 5 : 6;
+const initialZoom = isMobile ? 5 : 5;
 
 const map = L.map("map", {
   zoomControl: true,
