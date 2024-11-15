@@ -328,14 +328,61 @@ let zoomTimeout;
 
 // Initialize map with different zoom levels based on screen size
 const isMobile = window.innerWidth <= 768;
-const initialZoom = isMobile ? 5 : 6;
+const initialZoom = isMobile ? 5 : 5.7;
 
+// Initialize map with finer zoom control
 const map = L.map("map", {
   zoomControl: true,
   minZoom: isMobile ? 4 : 5,
   maxZoom: isMobile ? 8 : 12,
   scrollWheelZoom: false,
+  // Add finer zoom control
+  zoomDelta: 0.25,  // Controls zoom increment/decrement step
+  zoomSnap: 0.25,   // Snap to these increments when zooming
+  wheelPxPerZoomLevel: 120  // More pixels needed to trigger a zoom level change
 }).setView([-29.0852, 26.1596], initialZoom);
+
+// Create custom zoom control with smaller steps
+const zoomControl = new L.Control.Zoom({
+  position: 'topleft',
+  zoomInTitle: 'Zoom in',
+  zoomOutTitle: 'Zoom out'
+});
+
+map.removeControl(map.zoomControl);
+map.addControl(zoomControl);
+
+// Calculate bounds for all markers
+let bounds = L.latLngBounds();
+
+// Add all valid marker coordinates to bounds
+areasData.forEach(area => {
+  if (area.coordinates.latitude !== 0 && area.coordinates.longitude !== 0) {
+    bounds.extend([area.coordinates.latitude, area.coordinates.longitude]);
+  }
+});
+
+// Add padding to bounds (5% of the total size)
+const paddingPercent = 0.05;
+const paddedBounds = bounds.pad(paddingPercent);
+
+// After all markers are added, fit the map to the bounds
+map.on('layeradd', function() {
+  map.fitBounds(paddedBounds);
+});
+
+// Also fit bounds when window is resized
+window.addEventListener("resize", function () {
+  map.invalidateSize();
+  const isMobile = window.innerWidth <= 768;
+
+  // Update zoom constraints
+  map.setMinZoom(isMobile ? 4 : 5);
+  map.setMaxZoom(isMobile ? 8 : 12);
+
+  // Fit to bounds again after resize
+  map.fitBounds(paddedBounds);
+});
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "© OpenStreetMap contributors",
@@ -447,6 +494,7 @@ function filterByInitiative(selectedInitiative) {
       hamburger.classList.remove("active");
     }
   }
+
 }
 
 // Populate menu dynamically
@@ -523,6 +571,8 @@ map.on("wheel", function (e) {
   if (e.originalEvent.ctrlKey) {
     if (!map.scrollWheelZoom.enabled()) {
       map.scrollWheelZoom.enable();
+      // Set smaller zoom increment for wheel zoom
+      map.scrollWheelZoom.setWheelPxPerZoomLevel(120);
     }
   } else {
     if (map.scrollWheelZoom.enabled()) {
